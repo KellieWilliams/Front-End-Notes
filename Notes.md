@@ -21,8 +21,7 @@ There are different types of hosting, shared, virtual private, dedicated, and cl
 Internet protocols (IP)
    - TCP - Transmission Control Protocol requires a handshake from both the client and server so that data transfers intact and in order, but at the cost of the handshake delay
    - UDP - User Datagram Protocol doesn't require a handshake and therefore is faster at moving data, but data can arrive corrupt or not in order, this is the protocol for phone calls or streaming
-
-HTTP - hyertext transfer protocol - a protocol followed for transfering web pages, images, and other files
+   - HTTP - hyertext transfer protocol - a protocol followed for transfering web pages, images, and other files
 
 An HTTP request looks like this
 ### Header
