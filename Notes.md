@@ -65,6 +65,33 @@ An HTTP response looks like this
 
 HTTPS is a secure version of HTTP, used for the transfering of private data like health and credit card info using encryption
 
+HTML Tags and elements
+  - Sir Tim Berners-Lee wanted to share info to his friends and colleauges around the world, this started the creation of HTML
+  - The very first webpage was created in 1989 by Sir Berners-Lee
+  - He worked at the European organization for Nuclear Research (CERN)
+  - The first version of HTML, web browser, and web server were released in 1991
+  - Hypertext is text that contains links to other text
+  - Markup refers to tags and elements used within a document
+  - HTML is basically a text file with a specific structure that consists of elements and tags
+  - HTML elements consist of
+    - Opening tag in angle brackets `<p>` followed by a closing tag also in angle brackets `</p>`
+    - Between the tags will usually contain content, for example
+
+      `<p>This is a <i>paragraph</i></p>`
+
+      Which results into
+      <p>This is a <i>paragraph</i></p>
+
+  - Elements can also be empty, or self closing, which doesn't need a closing tag, for example
+
+      `<p>This is a <br>paragraph</p>`
+
+      Results into
+
+      <p>This is a <br>paragraph</p>
+
+  - HTML standards - rules and structures in HTML specification maintained by the World Wide Web Consortium (W3C)
+
 Frameworks and libraries
   - These are tools that devs use to make new software
   - Many devs use the terms interchangeably, but they are different
@@ -110,9 +137,5 @@ IDE - Integrated Development Environment
   - Intellisense can detect functions and variables and make suggestions as you're writing
   - Refactoring is something else IDEs can do. Because IDEs understand your code, they can make suggestions on how to change it. When a variable or name of a function needs to be renamed, making sure it's consistantly renamed through the whole code and other files is called refactoring.
     - In VS Code, just right click on the variable or function name and select rename symbol
-
-
-
-
 
   
