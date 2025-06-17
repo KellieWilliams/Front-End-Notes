@@ -65,7 +65,7 @@ An HTTP response looks like this
 
 HTTPS is a secure version of HTTP, used for the transfering of private data like health and credit card info using encryption
 
-HTML Tags and elements
+### HTML Tags and elements
   - Sir Tim Berners-Lee wanted to share info to his friends and colleauges around the world, this started the creation of HTML
   - The very first webpage was created in 1989 by Sir Berners-Lee
   - He worked at the European organization for Nuclear Research (CERN)
@@ -91,8 +91,179 @@ HTML Tags and elements
       <p>This is a <br>paragraph</p>
 
   - HTML standards - rules and structures in HTML specification maintained by the World Wide Web Consortium (W3C)
+  - The current version of HTML is HTML5
+  - HTML documents are text documents containing simple webpage formatting
+  - Here is an example of a standard HTML structure:
 
-Frameworks and libraries
+```html
+<!DOCTYPE html> <!-- This tells the webbrowser it's an html doc -->
+<html> <!-- html tag to start, aka html root element -->
+  <head> <!-- first of two main elements for webpage, nothing inside head element is displayed on the page on the webbroswer, this is where metadata is placed -->
+      <title>Little Lemon</title> <!-- metadata for the page, can also link to CSS files, description of the webpage, keywords for search engines, and author of the webpage-->
+  </head>
+  <body> <!-- second of two main elements for webpage, here is where content of webpage goes, such as headings, paragraphs, images, and videos -->
+    <h1>Our Menu</h1> <!-- Main heading -->
+    <h2>Falafel</h2> <!-- Sub Heading #1 -->
+    <p>Chickpea, herbs, and spices.</p> <!-- Paragraph information below SubHeading #1-->
+    <h2>Pasta Salad</h2> <!-- Sub Heading #2 -->
+    <P>Lettuce, vegetables, and mozzarella</p> <!--Paragraph info below SubHeading #2 -->
+  </body>
+</html>
+```
+- There are many tags available in HTML:
+  - headings `<h1></h1>`
+  - paragraphs `<p></p>`
+  - line breaks `<br> or <br/>`
+  - strong `<strong></strong>` which can be used to indicate that a range of text has imporance, makes the text appear bold
+  - bold `<b></b>`
+  - emphasis `<em></em>` is used to indicate a range of text is important, makes the text appear italisized
+  - italics `<i></i>` used around technical terms, titles, thoughts or phrases from another language, etc.
+  - unordered lists `<ul></ul>` with `<li></li>` Makes a bulleted outline list
+    ```html
+    <ul>
+      <li>Tea</li>
+      <li>Sugar</li>
+      <li>Milk</li>
+    </ul>
+    ```
+  - ordered lists `<ol></ol>` with `<li></li>` Makes a numbered outline list
+    ```html
+    <ol>
+      <li>Rocky I</li>
+      <li>Rocky II</li>
+      <li>Rocky III</li>
+    </ol>
+    ```
+  - You can change the type of bullet used in outlines depending on the CSS library you include.
+    - For example, Google's Tailwind CSS allows you to change to lower case or upper case letters, or even Roman numerals
+  ```html
+          <h2 class="text-2xl font-semibold mb-3">Ordered List with Different Type (`<ol type="a">`)</h2>
+        <!--
+            You can change the type of marker for ordered lists using the 'type' attribute.
+            'type="a"' for lowercase letters, 'type="A"' for uppercase letters,
+            'type="i"' for lowercase Roman numerals, 'type="I"' for uppercase Roman numerals.
+        -->
+        <ol type="a" class="list-lower-alpha"> <!-- 'list-lower-alpha' is a Tailwind class for lowercase letters -->
+            <li>Item A</li>
+            <li>Item B</li>
+            <li>Item C</li>
+            <li>Item D</li>
+        </ol>
+  ```
+  - Div tags define a content division in an HTML document.
+    - It acts as a generic container and has no effect on the content unless it is styled by CSS.
+    ```html
+    <div>
+     <p>This is a paragraph inside a div</p>
+    </div>
+    ```
+  - It can be nested inside other elements:
+    ```html
+    <div>
+    <div>
+        <p>This is a paragraph inside a div that’s inside another div</p>
+    </div>
+    </div>
+    ```
+  - div's have no impact on content unless it's styled by CSS:
+    ```html
+        <style> <!-- This style is defining a boarder around each div, since there are two below this will result in a double boarder appearance around the paragraph -->
+        div {
+            border: 1px solid black;
+            padding: 2px;
+        }
+      </style>
+      <div>
+        <div>
+            <p>This is a paragraph inside stylized divs</p>
+        </div>
+      </div>
+    ```
+  - And comments can be left like so
+    ```html
+    <!-- This is a comment -->
+    ```
+  - anchor tags - create hyperlinks to link pages together
+    - `<a href="example.html">Example Text</a>` a is the anchor tag, href is the hypertext reference, the file name of the linked page goes between the "", and in the tag body you can place any characters you want displayed for the link
+  - image tags - this is to insert an image into a webpage
+    - `<img src="Example.jpeg" width="240" height="135" alt="An example image">` img is the image tag, src is the source, the file name of the image goes between the "", the image file needs to be in the same folder location as the .html file referencing it for this example to work, width locks the image into a width of 240px, height locks the image into a height of 135px, the image will be resized to these dimensions, alt allows for short descriptions of the image for people who are using accessability readers.
+  - table tags to create tables to display data
+    ```html
+    <table> <!-- table tag, start of table -->
+      <tr>
+        <th>Example Number</th> <!-- this is the table header tag and allows us to put in column titles in bold -->
+        <th>Data Number</th>
+      </tr>
+      <tr> <!-- first table row -->
+        <td>Example 1</td> <!-- table data -->
+        <td>123</td> <!-- this will place this data to the right of Example 1 -->
+      </tr>
+      <tr> <!-- this starts a new row in the table -->
+        <td>Example 2</td> <!-- table data -->
+        <td>456</td>
+      </tr>
+    </table>
+    ```
+     Here is what the above would display as on a webbrowser.
+    <table>
+    <tr>
+        <th>Example Number</th> 
+        <th>Data Number</th>
+      </tr>
+      <tr>
+        <td>Example 1</td>
+        <td>123</td>
+      </tr>
+      <tr>
+        <td>Example 2</td>
+        <td>456</td>
+      <tr>
+    </table>
+  - forms - `<form></form>` - allows users to input data that is then sent via http
+    - the action tag within the form directs the data entered in the form where it is supposed to go
+
+      `<form action="/registration" method="POST">`
+    - when action is not specified it submits the request to the same path as the current webpage
+    - label titles the input field created in the next step
+
+      `<label for="username">Username:</label><br>`
+    - input type adds fields the user can enter data into
+
+      `<imput type="text" name="username">` this is a simple text input box.
+    - html has a masking input type for use with sensative data, such as passwords
+
+      `<label for="password">Password:</label><br>`
+
+      `<input type="password" />`
+    - submit buttons can be created
+
+      `<input type="submit" />`
+    - checkboxes can be created
+
+      `<input type="checkbox" name="Checkbox 1" value="Yes" />`
+
+      `<label for="Checkbox 1">Check here for yes.</label><br>`
+    - Can also make radio button selections
+
+      `input type="radio" name="right" value="Right" />`
+
+      `label for="right"> I am right-handed.</label><br>`
+
+      `input type="radio" name="left" value="Left" />`
+
+      `label for="left"> I am left-handed.</label><br>`
+    - other form types:
+    
+      `<input type="number" name="age" />`
+
+      `<input type="email" name="email" />`
+
+      `<input type="file" name="file" />`
+  
+
+
+
+### Frameworks and libraries
   - These are tools that devs use to make new software
   - Many devs use the terms interchangeably, but they are different
     - Libraries are reusable pieces of code that has a specific functionality
