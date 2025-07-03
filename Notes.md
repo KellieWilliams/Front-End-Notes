@@ -230,7 +230,11 @@ HTTPS is a secure version of HTTP, used for the transfering of private data like
     - input type adds fields the user can enter data into
 
       `<imput type="text" name="username">` this is a simple text input box.
+      - This, however, only allows for single line tet input
+      - for multiple lines use
+      `<textareaname="multiline" rows="5"></textarea>`
     - html has a masking input type for use with sensative data, such as passwords
+    
 
       `<label for="password">Password:</label><br>`
 
@@ -260,8 +264,44 @@ HTTPS is a secure version of HTTP, used for the transfering of private data like
 
       `<input type="file" name="file" />`
   
+- Another type of input that doesn't use the input tag is a dropdown list, it uses the select and option tags
 
+  ```html
+  <select name='food">
+    <option value="chocolate">Chocolate</option>
+    <option value="ice cream">Ice Cream</option>
+  </select>
+  ```
 
+- To allow users to log in, like posts, or get notifications they need to be able to interact with items on the webpage, like react icons or comment button.
+  - This is where **Document Object Model (DOM)** comes into play
+  - When a user's web browser receives an HTML page it constructs a DOM to represent it
+  - DOMs are a tree structure of objects
+  - The DOM has a series of objects, each representing a single HTML element
+    - The root of the DOM is the HTML object
+    - the HTML object contains the `<head>` and `<body>` objects
+    - The `<head>` object contains the `<title>` object which contains its `<text>` objects
+    - The `<body>` object contains its `<div>` objects which will contain its `<h1>` and `<text>` objects, and so on, until a tree structure is formed which in its entirety is the DOM
+  - The DOM allows you to update all HTML elements on a web page.
+  - We use Javascript to access objects in the DOM to make them dynamic.
+  - Common DOM and Javascript uses include:
+    - Mouse hover, click, animate through libraries and frameworks
+      - One of these libraries is the **REACT** library
+
+- **Accessibility**
+  - Practices that allow everyone can enjoy the websites, including those with disabilities
+  - **W3C Web Accessibilities Initiative (WAI)** was launched in 1997
+  - Web accessibility: allows people with disabilities to understand, navigate and interact with websites.
+    - This includes all disabilities: visual, audio, cognitive, physical, and speech.
+  - There are specifications and supporting resrouces:
+    - International standards which are becoming a requirement in many industries
+    - 2016 the EU approved the **Web Accessibility Directive (WAD)** which requires websites and mobile apps of public section bodies to be accessible to those with disabilities
+  - Those with disabilities use tools to help them understand webpages:
+    - Screen reader software reads what's happening on the page
+    - Speech recognition software turns spoken words into commands or notate into text
+    - Subtitles and video scripts
+  - Using the correct HTML syntax like proper tags makes it easier for assistive tech to interpret whats on the screen
+  - Really detailed websites can be very complex and still difficult for assistive tech to interpret so the WAI is developing the **Accessible Rich Internet Application (ARIA)** specification which outlines specific techniques to improve accessibility in complex web apps
 
 ### Frameworks and libraries
   - These are tools that devs use to make new software
@@ -273,7 +313,7 @@ HTTPS is a secure version of HTTP, used for the transfering of private data like
     - Frameworks force structure and can reduce dev time and have best practices, but sometimes the structure can be constraining and there can be compatibility issues if you want to use a library that the framework doesn't work with
     - If no framework is utilized, the dev will have to determine which libraries to use through the entire process, which gives the dev flexibility, but then also can incorporate compatibility issues if two or more libraries are in conflict
 
-APIs and Services
+### APIs and Services
   - Application Programming Interface
   - It's a service, application, or interface offering advanced functionality with simple syntax
   - Common APIs include: browser, REST, and sensor-based
@@ -299,7 +339,7 @@ APIs and Services
     - This is built into the URL. One the endpoint is hit, the API performed whatever server-side processing is needed to build the response.
     - Two common responses are full webpages and a data form based on JS called JSON
 
-IDE - Integrated Development Environment
+### IDE - Integrated Development Environment
   - This is the tool (software) used by devs to write their code
   - Some are specific to one programming language, others support many
   - IDEs have syntax highlighting to help developers differentiate keywords
@@ -309,4 +349,223 @@ IDE - Integrated Development Environment
   - Refactoring is something else IDEs can do. Because IDEs understand your code, they can make suggestions on how to change it. When a variable or name of a function needs to be renamed, making sure it's consistantly renamed through the whole code and other files is called refactoring.
     - In VS Code, just right click on the variable or function name and select rename symbol
 
-  
+### CSS
+  - Selecting and styling
+  - CSS tells the web browser how to display the HTML elements on screen
+  - There are five elements in CSS (CSS rule)
+    - selector
+    - declaration block { }
+      - declaration
+        - value
+        - property
+
+      ```css
+      p {            /* the p is the seclector, indicates which HTML element you want to style */
+        color: blue;  /* between the {} is the declaration block with the style declarations made of the value and its property */
+      }
+      ```
+        - Each declaration block is made up of two parts: a property and a value
+      `color: blue;`
+        - Here "color" is the property
+        - "blue" is the value
+        - Because this declaration block is assigned to the `<p>` element, all `<p>` elements on the associated HTML page will be blue
+    - There are different types of selectors
+      - Element selectors like `p` or `h1`
+      - ID selectors like `#title` or `#header1` when you want to make an exception to a single element
+      - Class selectors like `.navigation` or `.footer` which can be assigned to all elements assigned to that class through
+        ```html
+        <a class="navigation">Go Back</a>
+        <p class="navigation">Go Forward</p>
+        ```
+      - Can get more specific by selecting elements with a class selector
+
+        *HTML*
+        ```html
+        <p class="introduction"></p>
+        ```
+        *CSS*
+        ```css
+        p.introduction {
+          margin: 2px;
+        }
+        ```
+      - **Descendant selectors** can be used to select HTML elements that are contained with in another selector
+
+        *HTML*
+        ```html
+        <div id="blog">
+          <h1>Latest News</h1>
+          <div>
+           <h1>Today's Weather</h1>
+           <p>The weather will be sunny</p>
+        </div>
+        <p>Subscribe for more news</p>
+        </div>
+        <div>
+          <h1>Archives</h1>
+        </div>
+        ```
+      
+        *CSS*
+          ```css
+          /* This rule will only apply to the h1 in ID blog, and not h1 in the next div container "Archives" */
+          #blog h1 {
+            color: blue;
+          }
+          ```
+        - Multiple descendants can also be selected. For example, to select all `h1` elements that are descendants of `div` elements which are descendants of the `blog` elemeent, the selector is specified as follows:
+          ```css
+          #blog div h1 {
+            color: blue;
+          }
+          ```
+      - **Child selectors** are more specific than descendant selectors. They only select elements that are imediate descendants (childern) of a selector (the parent), for example this will style only the words "Latest News"
+
+        *HTML*
+        ```html
+        <div id="blog">
+          <h1>Latest News</h1>
+          <div>
+            <h1>Today's Weather</h1>
+            <p>The weather will be sunny</p>
+          </div>
+          <p>Subscribe for more news</p>
+        </div>
+        ```
+        *CSS*
+        ```css
+        #blog > h1 {
+          color: blue;
+        }
+        ```
+      - **:hover Pseudo-Class** is a special keyword which allows devs to select elements based on their state. This particular one allows you to style an element when a mouse cursor is hovered over that element (like hovering over a hyperlink)
+        ```css
+        a:hover {
+          color: orange;
+        }
+        ```
+      - There are many more selectors available for CSS styling
+    - Text and color in CSS
+      - In CSS v3 there are five main ways to reference a color:
+        - RGB value
+          - Red Green and Blue hues between 0 and 255 to change intensity
+          - For example red would be 255, 0, 0
+          - Black would be 0, 0, 0
+          - White 255, 255, 255
+          ```css
+          p {
+            color: rgb(255, 0, 0);
+          }
+          ```
+        - RGBA value
+          - Extension of RGB with an alpha (A) channel which reps opacity/transparancy
+          ```css
+          p {
+            color: rgba(255, 0, 0, 0.8);
+          }
+          ```
+        - HSL value
+          - Newer color model
+          - Hue (H), Saturation (S), and Lightness (L)
+          - Take a rainbow and spin in a circle. The H is the degree of rotation determining color, S is the length of the radius determing the shade of the color, and L is how dark (black) or bright (white) you want that color/shade.
+          ```css
+          p {
+            color: hsl(0, 100%, 50%);
+          }
+          ```
+        - hex
+          - This uses hexidecimal (hex) value with 16 digits: `0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F`.
+          - Colors in hex start with a `#` followed by the RGB value in hexadecimal
+          - For example, red would be `#FF0000`
+        - predefined color names
+          - There are 140 predefined color names in modern web browsers
+          - common names include: black, silver, white, gray, red, purple, etc.
+      - There are many ways to change how text is displayed using CSS
+        - Color using the `color` property
+        - Font and size uses the font-family property
+          ```css
+          p {
+            font-family: "Courier New", monospace;
+          }
+          ```
+        - Computers vary in what fonts they have installed, so it's recommended to incude several fonts when using the `font-family` property.
+          - These are specified in fallback order, the first is the ideal font to use, the second is the first fall back option if the first font is not available, etc.
+        - Size of font is specified like follows:
+          ```css
+          p {
+            font-family: "Courier New", monospace;
+            font-size: 12px;
+          }
+          ```
+      - Text transformation if you want to ensure that text has the correct capitalization using `text-transform`
+        ```css
+        p {
+          text-transform: uppercase;
+        }
+        ```
+        - Values for `text-transform` include uppercase, lowercase, capitalize, and none (default)
+      - Text decoration
+        - `text-decoration` is useful to apply additional decoration to text like underline and strike-through
+        ```css
+        h1 { /* This is a solid red underline of 5px in thickness */
+            text-decoration-line: underline;
+            text-decoration-color: red;
+            text-decoration-style: solid;
+            text-decoration-thickness: 5px;
+        }
+
+        p { /* This is short-hand for the above */
+          text-decoration: underline red solid 5px;
+        }
+        ```
+        - Most common `text-decoration-line` values are underline, overline, line-through, and none
+        - `text-decoration-style` values are solid (default), double, dotted, dashed, and wavy
+      - Alignment within its content box is created using `text-align` for the property and `left, center, right, and justify` for the value. `Justify` will spread the text out so that every line of the text has the same width. Default is `left` for languages such as English, `right` for languages such as Arabic.
+  - Box Model
+    - Helps create an appealing layout of objects
+    - Browser will dedicate a rectangle to each element to begin layout on the page
+    - CSS rule are then tied to the boxes for styling
+    - Every box model contains four parts listed here from inner to outermost:
+      - Content
+      - Padding
+      - Border
+      - Margin
+    - Browsers will default the size of the content rectangle's height and width to the actual content but these dimentions can be controlled through styling/CSS rules
+      - width: 1px;
+      - min-width
+      - max-width
+      - height
+      - min-height
+      - max-height
+    - Padding is the next layer up from the content rectangle
+      - This size can be controlled by
+      - padding-top
+      - padding-bottom
+      - padding-left
+      - padding-right
+      - shorthand: Padding: 4px 2px 1px 5px;
+    - Border is the next layer above padding
+      - borders can be set to solid, dashed, dotted, or double
+      - border-width: thin, medium, or thick
+      - shorthand: border-width: 2px 3px 1 px 4px;
+    - Margins are the next layer above border
+      - margin-top: 4px;
+      - margin-bottom
+      - margin-left
+      - margin-right
+      - shorthand: margin: 1px 2px 4px 5px;
+  - Document flow: block vs. inline
+    - Document flow is how the browser calculates where to display the content on the screen
+    - Elements are organized in one of two catagories: block or inline
+      - block occupies the full horizontal width of the screen and the vertical height of the content, each element ends on a new line, so the next block will appear below the first which results in a stack of blocked elements on the screen
+        - block level elements include `<div>, <form>, <h1>, <h2>, <h3>, <h4>, and <h5>`
+      - inline elements only occupy the width and height of their content and don't appear on a new line (hence "inline") 
+        - inline elements include `<a>, <img>, <input>, <label>, <b>, <i>, <em>, and <span>`
+      - element defaults of block or inline can be overwritten using CSS
+        ```css
+        #id {
+          display: inline; /* or block */
+        }
+        ```
+    - Alignment for elements is more complicated than text alignment
+      - Center alignment is acheived through setting a width on the element and pushing its margins out to fill the remaining available space of the parent element.  
