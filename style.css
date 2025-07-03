@@ -1,0 +1,9 @@
+/* This will apply the color purple to all the h1 elements */
+h1 {
+    color: purple;
+}
+
+/* If I want an exception to the above, I can apply an id to a particular h1 element and then define it here, in this case it's called header1 */
+#header1 {
+    color: green;
+}
